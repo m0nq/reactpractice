@@ -9,7 +9,7 @@ ReactDOM.render(
         <App></App>
         <hr/>
         <App/>
-    </div>, document.getElementById('root')
+    </div>, document.getElementById('react-element')
 );
 
 registerServiceWorker();
