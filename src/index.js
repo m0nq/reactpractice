@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <div>
-    <App headerText="My Heading" content="This is some content..."></App>
+    <App name="Monk"></App>
   </div>, document.getElementById('react-element')
 );
 
