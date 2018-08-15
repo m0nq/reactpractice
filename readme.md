@@ -1,1 +1,1 @@
-This is simple app project for learning React.js
+This is simple project for learning React.js

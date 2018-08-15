@@ -5,11 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-    <div>
-        <App></App>
-        <hr/>
-        <App/>
-    </div>, document.getElementById('react-element')
+  <div>
+    <App headerText="My Heading" content="This is some content..."></App>
+  </div>, document.getElementById('react-element')
 );
 
 registerServiceWorker();
