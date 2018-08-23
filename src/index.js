@@ -6,9 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <div>
-    <App>Button is here</App>
-    <hr/>
-    <App>Some other button</App>
+    <App></App>
   </div>, document.getElementById('react-element')
 );
 
