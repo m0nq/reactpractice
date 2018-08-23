@@ -3,15 +3,26 @@ import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  }
+
   btnClick() {
-    alert("Button clicked...");
+    this.setState({
+      count: this.state.count + 1
+    });
   }
 
   render() {
     return (
       <div>
-        <p>{this.props.children}</p>
-        <button onClick={this.btnClick}>Click here</button>
+        <h1>Value : {this.state.count}</h1>
+        <br/>
+        <button onClick={this.btnClick.bind(this)}>Increment</button>
       </div>
     );
   }
