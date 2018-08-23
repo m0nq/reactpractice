@@ -1,28 +1,66 @@
-import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      count: 0
+      data: 0
     };
+    this.setNewNumber = this.setNewNumber.bind(this);
   }
 
-  btnClick() {
+  setNewNumber() {
     this.setState({
-      count: this.state.count + 1
+      data: this.state.data + 1
     });
   }
 
   render() {
     return (
       <div>
-        <h1>Value : {this.state.count}</h1>
-        <br/>
-        <button onClick={this.btnClick.bind(this)}>Increment</button>
+        <button onClick={this.setNewNumber}>Increment</button>
+        <Content myNumber={this.state.data}></Content>
+      </div>
+    );
+  }
+}
+
+class Content extends Component {
+
+  componentWillMount() {
+    console.log('Component will MOUNT!');
+  }
+
+  componentDidMount() {
+    console.log('Component DID MOUNT!');
+  }
+
+  componentWillReceiveProps(newProps) {
+    console.log('Component WILL RECEIVE PROPS!');
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log('Component WILL UPDATE!');
+  }
+
+  componentDidUpdate() {
+    console.log('Component DID UPDATE!');
+  }
+
+  componentWillUnmount() {
+    console.log('Component WILL UNMOUNT!');
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>{this.props.myNumber}</h3>
       </div>
     );
   }
