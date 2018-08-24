@@ -1,35 +1,36 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import './App.css';
+import Emp from './emp';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    emps: [
+      {id: 101, name: 'Paul', salary: 5000},
+      {id: 102, name: 'Sam', salary: 2000},
+      {id: 103, name: 'Sid', salary: 2500},
+      {id: 104, name: 'John', salary: 5000},
+      {id: 105, name: 'Alice', salary: 4000},
+    ]
+  };
 
-    this.state = {
-      data: ''
-    };
-
-    this.updateState = this.updateState.bind(this);
-    this.clearInput = this.clearInput.bind(this);
-  }
-
-  updateState(e) {
-    this.setState({data: e.target.value});
-  }
-
-  clearInput() {
-    this.setState({data: ''});
-    ReactDOM.findDOMNode(this.refs.myText).focus();
+  delEmp(index, e) {
+    const copyemps = Object.assign([], this.state.emps);
+    copyemps.splice(index, 1);
+    this.setState({emps: copyemps});
   }
 
   render() {
     return (
       <div>
-        <input type="text" value={this.state.data} onChange={this.updateState} ref="myText"/>
-        <h4>{this.state.data}</h4>
-        <button onClick={this.clearInput}>Clear</button>
+        <table style={{width: '500px', color: 'blue'}}>
+          <tbody>
+          {
+            this.state.emps.map((emp) => {
+              return (<Emp salary={emp.salary} key={emp.id} deleteEvent={this.delEmp.bind(this)}>{emp.name}</Emp>);
+            })
+          }
+          </tbody>
+        </table>
       </div>
     );
   }
