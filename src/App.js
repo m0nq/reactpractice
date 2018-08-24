@@ -1,37 +1,25 @@
 import React, {Component} from 'react';
-import Emp from './emp';
-
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Home from './home';
+import Login from './login';
 class App extends Component {
-
-  state = {
-    emps: [
-      {id: 101, name: 'Paul', salary: 5000},
-      {id: 102, name: 'Sam', salary: 2000},
-      {id: 103, name: 'Sid', salary: 2500},
-      {id: 104, name: 'John', salary: 5000},
-      {id: 105, name: 'Alice', salary: 4000},
-    ]
-  };
-
-  delEmp(index, e) {
-    const copyemps = Object.assign([], this.state.emps);
-    copyemps.splice(index, 1);
-    this.setState({emps: copyemps});
-  }
 
   render() {
     return (
-      <div>
-        <table style={{width: '500px', color: 'blue'}}>
-          <tbody>
-          {
-            this.state.emps.map((emp) => {
-              return (<Emp salary={emp.salary} key={emp.id} deleteEvent={this.delEmp.bind(this)}>{emp.name}</Emp>);
-            })
-          }
-          </tbody>
-        </table>
-      </div>
+      <Router>
+        <div>
+          <h2>Welcome to React Router Tutorial</h2>
+          <ul>
+            <li><Link to={'/'}/>Home</li>
+            <li><Link to={'/login'}/>Login</li>
+          </ul>
+          <hr/>
+          <Switch>
+            <Route exact path='/' component={Home}></Route>
+            <Route exact path='/login' component={Login}></Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
